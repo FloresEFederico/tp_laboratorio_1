@@ -17,7 +17,7 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 
 	FILE* pFile = fopen(path,"r");
 
-	if(pFile != NULL && path != NULL)
+	if(pFile != NULL && path != NULL && pArrayListEmployee)
 	{
 		if(!parser_EmployeeFromText(pFile,pArrayListEmployee))
 		{
@@ -38,10 +38,10 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 {
 	int retorno = 1;
-
 	FILE* pFile = fopen(path,"rb");
 
-	if(pFile != NULL && path != NULL)
+
+	if(pFile != NULL && path != NULL && pArrayListEmployee != NULL)
 	{
 		if(!parser_EmployeeFromBinary(pFile,pArrayListEmployee))
 		{

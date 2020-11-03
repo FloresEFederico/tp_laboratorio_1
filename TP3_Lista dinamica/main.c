@@ -55,7 +55,7 @@ int main()
 					}
 					break;
 				case 2:
-					if(!flagDatosCargados && !controller_loadFromBinary("dataBinary.csv",listaEmpleados))
+					if(!flagDatosCargados && !controller_loadFromBinary("data.bin",listaEmpleados))
 					{
 						printf("\nSe cargo los datos exitosamente!\n");
 						flagDatosCargados = 1;
@@ -116,7 +116,7 @@ int main()
 					}
 					break;
 				case 9:
-					if(flagDatosCargados && !controller_saveAsBinary("dataBinary.csv",listaEmpleados))
+					if(flagDatosCargados && !controller_saveAsBinary("data.bin",listaEmpleados))
 					{
 						printf("\nSe guardaron los datos exitosamente!\n");
 					}else if(!flagDatosCargados)

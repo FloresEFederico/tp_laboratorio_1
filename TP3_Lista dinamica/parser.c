@@ -55,6 +55,7 @@ int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee)
 {
 	int retorno = -1;
 	Employee* this;
+
 	if(pFile != NULL && pArrayListEmployee != NULL)
 	{
 		do

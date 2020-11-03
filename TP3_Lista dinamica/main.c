@@ -32,14 +32,14 @@ int main()
     do{
     	if(!utn_getNumero(&option,"\n--MENU PRINCIPAL--\n"
     			"1-Cargar los datos de los empleados desde el archivo data.csv (modo texto).\n"
-    			"2-Cargar los datos de los empleados desde el archivo dataBinary.csv (modo binario).\n"
+    			"2-Cargar los datos de los empleados desde el archivo data.bin (modo binario).\n"
     			"3-Alta de Empleado\n"
     			"4-Modificar datos de Empleado.\n"
     			"5-Baja de Empleado.\n"
     			"6-Listar Empleados.\n"
     			"7-Ordenar Empleados.\n"
     			"8-Guardar los datos de los empleados desde el archivo data.csv (modo texto).\n"
-    			"9-Guardar los datos de los empleados desde el archivo dataBinary.csv (modo binario).\n"
+    			"9-Guardar los datos de los empleados desde el archivo data.bin (modo binario).\n"
     			"10-Salir.\nElija una opcion(1-10): ","\nOpcion Invalida!\n",1,10,3))
     	{
 			switch(option)

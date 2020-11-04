@@ -67,7 +67,7 @@ int main()
 				case 3:
 					if(flagDatosCargados && !controller_addEmployee(listaEmpleados))
 					{
-						printf("\nSe ha realizado el alta exitosamente!\n");
+						printf("------------------------------------------------------------------\n");
 					}else if(!flagDatosCargados)
 					{
 						printf("\nDeben cargarse los datos con anterioridad!\n");
@@ -76,7 +76,7 @@ int main()
 				case 4:
 					if(flagDatosCargados && !controller_editEmployee(listaEmpleados))
 					{
-						printf("\nSe modificaron los datos del empleado exitosamente!\n");
+						printf("------------------------------------------------------------------\n");
 					}else if(!flagDatosCargados)
 					{
 						printf("\nDeben cargarse los datos con anterioridad!\n");
@@ -85,7 +85,7 @@ int main()
 				case 5:
 					if(flagDatosCargados && !controller_removeEmployee(listaEmpleados))
 					{
-						printf("\nSe ha realizado la baja exitosamente!\n");
+						printf("------------------------------------------------------------------\n");
 					}else if(!flagDatosCargados)
 					{
 						printf("\nDeben cargarse los datos con anterioridad!\n");
@@ -100,7 +100,7 @@ int main()
 				case 7:
 					if(flagDatosCargados && !controller_sortEmployee(listaEmpleados))
 					{
-						printf("\nSe ordeno a los empleados exitosamente!\n");
+						printf("------------------------------------------------------------------\n");
 					}else if(!flagDatosCargados)
 					{
 						printf("\nDeben cargarse los datos con anterioridad!\n");
@@ -122,7 +122,6 @@ int main()
 					}else if(!flagDatosCargados)
 					{
 						printf("\nNo hay datos que guardar ya que no se cargo ningun dato!\n");
-						printf("Para acceder a los campos debera cargar primero los datos.\n");
 					}
 			}
     	}

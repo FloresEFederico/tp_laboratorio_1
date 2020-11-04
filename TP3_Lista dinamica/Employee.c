@@ -57,6 +57,10 @@ Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajad
 		   !employee_setSueldo(this,auxSueldo))
 		{
 			return this;
+		}else
+		{
+			employee_delete(this);
+			this = NULL;
 		}
 	}
 	return NULL;
@@ -362,10 +366,11 @@ int employee_altaEmployee(LinkedList* pArrayListEmployee,int len)
 			{
 				ll_add(pArrayListEmployee,this);
 				this = NULL;
+				printf("\nSe ha realizado el alta exitosamente!\n");
 				retorno = 0;
 			}else
 			{
-				printf("\nHubo un error en el pAuxAlumno\n");
+				printf("\nHubo un error en el ingreso de los datos!\n");
 			}
 		}
 	}
@@ -468,6 +473,7 @@ int employee_bajaEmployee(LinkedList* pArrayListEmployee,int len)
 					{
 						employee_delete(this);
 						ll_remove(pArrayListEmployee,indiceDeBaja);
+						printf("\nSe ha realizado la baja exitosamente!\n");
 					}else
 					{
 						printf("\nCancelando la baja\n");
@@ -698,6 +704,7 @@ int employee_ordenarEmployee(LinkedList* pArrayListEmployee,int len)
 			printf("\nOrdenamiento por ID\n");
 			if(!employee_ordenarPorId(pArrayListEmployee))
 			{
+				printf("\nSe ordeno por Id exitosamente!\n");
 				flagOrdenar = 1;
 			}
 			break;
@@ -705,6 +712,7 @@ int employee_ordenarEmployee(LinkedList* pArrayListEmployee,int len)
 			printf("\nOrdenamiento por Nombre\n");
 			if(!employee_ordenarPorNombres(pArrayListEmployee))
 			{
+				printf("\nSe ordeno por Nombre exitosamente!\n");
 				flagOrdenar = 1;
 			}
 			break;
@@ -712,6 +720,7 @@ int employee_ordenarEmployee(LinkedList* pArrayListEmployee,int len)
 			printf("\nOrdenamiento por Horas Trabajadas\n");
 			if(!employee_ordenarPorHorasTrabajadas(pArrayListEmployee))
 			{
+				printf("\nSe ordeno por Horas Trabajadas exitosamente!\n");
 				flagOrdenar = 1;
 			}
 			break;
@@ -719,13 +728,15 @@ int employee_ordenarEmployee(LinkedList* pArrayListEmployee,int len)
 			printf("\nOrdenamiento por Sueldos\n");
 			if(!employee_ordenarPorSueldos(pArrayListEmployee))
 			{
+				printf("\nSe ordeno por Sueldos exitosamente!\n");
 				flagOrdenar = 1;
 			}
 			break;
 		default:
+			printf("\nSe cancelo el ordenamiento, volviendo al menu principal.\n");
 			flagOrdenar = 1;
 		}
-		if(flagOrdenar)
+		if(flagOrdenar == 1)
 		{
 			retorno = 0;
 		}
@@ -745,16 +756,10 @@ static int employee_ordenarPorId(LinkedList* pArrayListEmployee)
 	int orden;
 	if(pArrayListEmployee != NULL)
 	{
-		if(!utn_getNumero(&orden,"\n¿De que manera desea ordenar a los Empleados?\n0-Ascendente.\n1-Descendente.\n2-Salir\nElija una opcion(0-1): ","\nOpcion invalida!",0,2,3))
+		if(!utn_getNumero(&orden,"\n¿De que manera desea ordenar a los Empleados?\n0-Ascendente.\n1-Descendente.\nElija una opcion(0-1): ","\nOpcion invalida!",0,1,3))
 		{
-			if(orden != 2)
-			{
-				printf("\nEspere unos segundos hasta que se ordenen...\n");
-				ll_sort(pArrayListEmployee,employee_compararIds,orden);
-			}else
-			{
-				printf("\nSe cancelo el ordenamiento, volviendo al menu principal.\n");
-			}
+			printf("\nEspere unos segundos hasta que se ordenen...\n");
+			ll_sort(pArrayListEmployee,employee_compararIds,orden);
 			retorno = 0;
 		}else
 		{
@@ -773,16 +778,10 @@ static int employee_ordenarPorNombres(LinkedList* pArrayListEmployee)
 {
 	int retorno = -1;
 	int orden;
-	if(pArrayListEmployee != NULL && !utn_getNumero(&orden,"\n¿De que manera desea ordenar a los Empleados?\n0-Ascendente.\n1-Descendente.\n2-Salir\nElija una opcion(0-1): ","\nOpcion invalida!",0,2,3))
+	if(pArrayListEmployee != NULL && !utn_getNumero(&orden,"\n¿De que manera desea ordenar a los Empleados?\n0-Ascendente.\n1-Descendente.\nElija una opcion(0-1): ","\nOpcion invalida!",0,1,3))
 	{
-		if(orden != 2)
-		{
-			printf("\nEspere unos segundos hasta que se ordenen...\n");
-			ll_sort(pArrayListEmployee,employee_compararNombres,orden);
-		}else
-		{
-			printf("\nSe cancelo el ordenamiento, volviendo al menu principal.\n");
-		}
+		printf("\nEspere unos segundos hasta que se ordenen...\n");
+		ll_sort(pArrayListEmployee,employee_compararNombres,orden);
 		retorno = 0;
 	}else
 	{
@@ -800,16 +799,10 @@ static int employee_ordenarPorHorasTrabajadas(LinkedList* pArrayListEmployee)
 {
 	int retorno = -1;
 	int orden;
-	if(!utn_getNumero(&orden,"\n¿De que manera desea ordenar a los Empleados?\n0-Ascendente.\n1-Descendente.\n2-Salir\nElija una opcion(0-1): ","\nOpcion invalida!",0,2,3))
+	if(!utn_getNumero(&orden,"\n¿De que manera desea ordenar a los Empleados?\n0-Ascendente.\n1-Descendente.\nElija una opcion(0-1): ","\nOpcion invalida!",0,1,3))
 	{
-		if(orden != 2)
-		{
-			printf("\nEspere unos segundos hasta que se ordenen...\n");
-			ll_sort(pArrayListEmployee,employee_compararHorasTrabajadas,orden);
-		}else
-		{
-			printf("\nSe cancelo el ordenamiento, volviendo al menu principal.\n");
-		}
+		printf("\nEspere unos segundos hasta que se ordenen...\n");
+		ll_sort(pArrayListEmployee,employee_compararHorasTrabajadas,orden);
 		retorno = 0;
 	}else
 	{
@@ -827,16 +820,10 @@ static int employee_ordenarPorSueldos(LinkedList* pArrayListEmployee)
 {
 	int retorno = -1;
 	int orden;
-	if(!utn_getNumero(&orden,"\n¿De que manera desea ordenar a los Empleados?\n0-Ascendente.\n1-Descendente.\n2-Salir\nElija una opcion(0-1): ","\nOpcion invalida!",0,2,3))
+	if(!utn_getNumero(&orden,"\n¿De que manera desea ordenar a los Empleados?\n0-Ascendente.\n1-Descendente.\nElija una opcion(0-1): ","\nOpcion invalida!",0,1,3))
 	{
-		if(orden != 2)
-		{
-			printf("\nEspere unos segundos hasta que se ordenen...\n");
-			ll_sort(pArrayListEmployee,employee_compararSueldos,orden);
-		}else
-		{
-			printf("\nSe cancelo el ordenamiento, volviendo al menu principal.\n");
-		}
+		printf("\nEspere unos segundos hasta que se ordenen...\n");
+		ll_sort(pArrayListEmployee,employee_compararSueldos,orden);
 		retorno = 0;
 	}else
 	{
